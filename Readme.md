@@ -26,21 +26,31 @@ This repository provides a secure and configurable Docker Compose setup for runn
 
 
 🚀 Getting Started
-1. Clone the Repository
 
-git clone https://github.com/your-username/pg-docker-setup.git
-cd pg-docker-setup
+Follow these steps to quickly set up the PostgreSQL Docker environment:
+1. 📥 Clone the Repository
 
-2. Configure Environment Variables
+git clone https://github.com/AhsanOfficee/databaseTemplate.git
+cd databaseTemplate
 
-Create a .env file from the provided template:
+2. ⚙️ Configure Environment Variables
+
+Create a .env file from the provided sample:
 
 cp .env.sample .env
 
-# Edit .env to fit your environment
+    📝 Edit the .env file to match your environment settings.
 
-3. Start the Container
+3. 🐳 Start the Docker Container
 
-Run the startup script:
+Run the startup script to build and launch the container:
 
 sudo sh dreload.sh
+
+4. 🧱 Access the PostgreSQL Container
+
+Once the container is running, you can access the PostgreSQL shell:
+
+sudo docker exec -it pg_master psql -U postgres postgres
+
+    This connects you to the default postgres database using the postgres user inside the pg_master container.
