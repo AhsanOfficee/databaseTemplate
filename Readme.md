@@ -1,93 +1,130 @@
-📦 PostgreSQL Docker Setup
+# 📦 PostgreSQL Docker Setup
 
-This repository provides a secure and configurable Docker Compose setup for running a PostgreSQL database container using environment variables from a .env file.
+This repository provides a secure, flexible Docker Compose setup to run a PostgreSQL database container using configuration values sourced from a `.env` file.
 
-⚙️ Features
+---
 
-    ✅ Uses PostgreSQL with environment-based configuration
+## ⚙️ Features
 
-    🛡️ Loads all secrets (user, password, DB name) from .env
+* ✅ **PostgreSQL with Configurable Environment**
+  Easily modify database credentials and settings using a `.env` file.
 
-    🐳 Docker Compose with custom network and volume
+* 🛡️ **Secrets Management**
+  Securely loads user, password, and database name from the environment file.
 
-    🔁 Auto-restart enabled for container reliability
+* 🐳 **Custom Docker Networking and Volumes**
+  Supports isolated networks and persistent storage.
 
-    🚀 Easy startup with a custom script
+* 🔁 **Automatic Container Restart**
+  Ensures high availability with Docker's restart policy.
 
+* 🚀 **Simple Startup Script**
+  One-step container build and deployment using a shell script.
 
-📁 Directory Structure
+---
 
+## 📁 Directory Structure
+
+```
 .
-├── docker-compose.yml    # Main Docker Compose configuration file
-├── .gitignore            # Git ignore file to exclude sensitive or unnecessary files
-├── .env.sample           # Sample environment configuration (safe to commit)
-├── dreload.sh            # Shell script to start and reload Docker containers
-└── README.md             
+├── docker-compose.yml     # Docker Compose configuration
+├── .gitignore             # Ignores unnecessary/sensitive files
+├── .env.sample            # Sample environment variables
+├── dreload.sh             # Startup/reload script for containers
+└── README.md              # Project documentation
+```
 
-# Project documentation
+---
 
-🚀 Getting Started
+## 🚀 Getting Started
 
-Follow these steps to quickly set up the PostgreSQL Docker environment:
-1. 📥 Clone the Repository
+Follow these steps to quickly spin up the PostgreSQL container environment:
 
+### 1. 📥 Clone the Repository
+
+```bash
 git clone https://github.com/AhsanOfficee/databaseTemplate.git
-
 cd databaseTemplate
+```
 
-2. ⚙️ Configure Environment Variables
+---
 
-Create a .env file from the provided sample:
+### 2. ⚙️ Configure Environment Variables
 
+Copy the sample `.env` file:
+
+```bash
 cp .env.sample .env
-    
-    ## ⚠️ IMPORTANT: .env File Format
+```
 
-> ❗ **Do NOT include spaces around `=` in the `.env` file** — it will break the `dreload.sh` script!
+> ⚠️ **IMPORTANT:** Do **NOT** include spaces around the `=` sign in `.env`, or `dreload.sh` will fail.
+>
+> ✅ Correct:
+>
+> ```env
+> PG_USER=myuser
+> PG_PASSWORD=secret123
+> ```
+>
+> ❌ Incorrect:
+>
+> ```env
+> PG_USER = myuser  # Will break the script
+> ```
 
-    ✅ Correct:
+Update the values to suit your environment.
 
-        ```env
-        PG_USER=myuser
-        PG_PASSWORD=secret123
-        
-    📝 Edit the .env file to match your environment settings.
+---
 
-3. 🐳 Start the Docker Container
+### 3. 🐳 Start the PostgreSQL Container
 
-        Docker version: 27.3.1, build ce12230
+Ensure you have the following versions:
 
-        Docker Compose version: v2.29.7
-Make the Script Executable
+* **Docker**: `27.3.1`
+* **Docker Compose**: `v2.29.7`
 
+Make the script executable:
+
+```bash
 chmod +x dreload.sh
+```
 
-Run the startup script to build and launch the container:
+Start the container:
 
+```bash
 ./dreload.sh
+```
 
-⚠ Troubleshooting
+---
 
-    1. Docker Compose Issues:
-    If dreload.sh fails, it may be due to a Docker Compose version mismatch.
-    Make sure your Docker and Docker Compose versions are compatible with the syntax used in docker-compose.yml.
-    If needed, update the commands in dreload.sh to match your local Docker setup and run it again.
+### ⚠️ Troubleshooting
 
-    2. Docker Image/Subnet Conflict:
-    If you encounter a Docker network conflict, try updating the subnet in your .env file to a different, unused range.
+#### 1. Docker Compose Errors
 
-4. 🧱 Access the PostgreSQL Container
+* Ensure compatibility between Docker Compose version and the syntax used.
+* If issues persist, adjust commands in `dreload.sh` for your setup.
 
-Once the container is running, you can access the PostgreSQL shell:
+#### 2. Subnet Conflicts
 
+* Modify the `SUBNET` value in `.env` if Docker reports a network address conflict.
+
+---
+
+Then reinstall:
+
+```bash
+npm install
+./dreload.sh
+```
+
+### 4. 🧱 Accessing the PostgreSQL Container
+
+Once the container is running, connect to the database shell:
+
+```bash
 sudo docker exec -it pg_master psql -U postgres auth
+```
 
-    This connects you to the auth database using the postgres user inside the pg_master container.
+This command opens a psql session into the `auth` database as the `postgres` user within the `pg_master` container.
 
-Replace Variables According To 
-
-    pg_master = Name Of Your Container
-
-    postgres = User Name Of Your Container
-    
-    auth = Database Name Of Your Container
+---
