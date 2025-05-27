@@ -43,14 +43,26 @@ cp .env.sample .env
 
 3. 🐳 Start the Docker Container
 
+Make the Script Executable
+
+chmod +x dreload.sh
+
 Run the startup script to build and launch the container:
 
-sudo sh dreload.sh
+./dreload.sh
 
 4. 🧱 Access the PostgreSQL Container
 
 Once the container is running, you can access the PostgreSQL shell:
 
-sudo docker exec -it pg_master psql -U postgres postgres
+sudo docker exec -it pg_master psql -U postgres auth
 
     This connects you to the default postgres database using the postgres user inside the pg_master container.
+
+Replace Variables According To 
+
+    pg_master = Name Of Your Container
+
+    postgres = User Name Of Your Container
+    
+    auth = Database Name Of Your Container

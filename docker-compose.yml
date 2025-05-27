@@ -9,18 +9,18 @@ services:
       POSTGRES_USER: "${PG_USER}"
       POSTGRES_PASSWORD: "${PG_PASSWORD}"
       POSTGRES_DB: "${PG_DB_NAME}"
+      POSTGRES_MAX_CONNECTIONS: "${POSTGRES_MAX_CONNECTIONS}"
     ports:
       - "${ACCESS_PORT}:${TARGET_PORT}"
     networks:
-      - ${NETWORK_NAME}  # This sets the actual network name in Docker
+      - default_network
     volumes:
       - "${BACKUP}:${SOURCE_LOCATION}"
     env_file:
       - .env
     restart: always
 networks:
-#  default:
-   pg_master_network:
+   default_network:   # Use a static internal name
     name: ${NETWORK_NAME}  # This sets the actual network name in Docker
     driver: bridge
     ipam: 
