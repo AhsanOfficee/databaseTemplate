@@ -40,6 +40,7 @@ cd databaseTemplate
 Create a .env file from the provided sample:
 
 cp .env.sample .env
+    
     ## ⚠️ IMPORTANT: .env File Format
 
 > ❗ **Do NOT include spaces around `=` in the `.env` file** — it will break the `dreload.sh` script!
