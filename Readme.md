@@ -1,6 +1,7 @@
 📦 PostgreSQL Docker Setup
 
 This repository provides a secure and configurable Docker Compose setup for running a PostgreSQL database container using environment variables from a .env file.
+
 ⚙️ Features
 
     ✅ Uses PostgreSQL with environment-based configuration
@@ -21,9 +22,9 @@ This repository provides a secure and configurable Docker Compose setup for runn
 ├── .gitignore            # Git ignore file to exclude sensitive or unnecessary files
 ├── .env.sample           # Sample environment configuration (safe to commit)
 ├── dreload.sh            # Shell script to start and reload Docker containers
-└── README.md             # Project documentation
+└── README.md             
 
-
+# Project documentation
 
 🚀 Getting Started
 
@@ -31,6 +32,7 @@ Follow these steps to quickly set up the PostgreSQL Docker environment:
 1. 📥 Clone the Repository
 
 git clone https://github.com/AhsanOfficee/databaseTemplate.git
+
 cd databaseTemplate
 
 2. ⚙️ Configure Environment Variables
@@ -57,7 +59,7 @@ Once the container is running, you can access the PostgreSQL shell:
 
 sudo docker exec -it pg_master psql -U postgres auth
 
-    This connects you to the default postgres database using the postgres user inside the pg_master container.
+    This connects you to the auth database using the postgres user inside the pg_master container.
 
 Replace Variables According To 
 
