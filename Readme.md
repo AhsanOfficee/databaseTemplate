@@ -55,6 +55,9 @@ cp .env.sample .env
 
 3. 🐳 Start the Docker Container
 
+        Docker version: 27.3.1, build ce12230
+
+        Docker Compose version: v2.29.7
 Make the Script Executable
 
 chmod +x dreload.sh
@@ -62,6 +65,16 @@ chmod +x dreload.sh
 Run the startup script to build and launch the container:
 
 ./dreload.sh
+
+⚠ Troubleshooting
+
+    1. Docker Compose Issues:
+    If dreload.sh fails, it may be due to a Docker Compose version mismatch.
+    Make sure your Docker and Docker Compose versions are compatible with the syntax used in docker-compose.yml.
+    If needed, update the commands in dreload.sh to match your local Docker setup and run it again.
+
+    2. Docker Image/Subnet Conflict:
+    If you encounter a Docker network conflict, try updating the subnet in your .env file to a different, unused range.
 
 4. 🧱 Access the PostgreSQL Container
 
