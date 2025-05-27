@@ -7,7 +7,7 @@ source .env
 # echo "sudo docker stop $CONTAINER_NAME"
 sudo docker stop $CONTAINER_NAME;
 sudo docker rm $CONTAINER_NAME;
-# sudo docker rmi $IMAGE_NAME:$VERSION; # Don't Delete Otherwise Conflict may Arise
+sudo docker rmi $IMAGE_NAME:$VERSION;
 # sudo rm -rf psqlData; # Not Required Because Actual Data Will Be Deleted
 echo y | sudo docker system prune;
 sudo docker compose up -d;
