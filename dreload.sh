@@ -15,6 +15,6 @@ echo y | sudo docker system prune;
 # Replace __SERVICE_NAME__ manually using sed, then envsubst for the rest
 sed "s/__SERVICE_NAME__/${SERVICE_NAME}/g" docker-compose.yml | envsubst > docker-compose.template.yml
 
-sudo docker compose -f ./docker-compose.template.yml up -d;
+sudo docker compose -f ./docker-compose.template.yml up -d; # start the container
 echo "sudo docker exec -it $CONTAINER_NAME psql -U $PG_USER $PG_DB_NAME";
 sudo rm -rf  docker-compose.template.yml;

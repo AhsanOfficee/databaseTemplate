@@ -1,7 +1,7 @@
 
 # version: '3.9'
 services:
-  __SERVICE_NAME__: # This sets the actual service name in Docker
+  __SERVICE_NAME__: # We will replace the value from .env from dreload.sh file
     image: ${IMAGE_NAME}:${VERSION}
     container_name: ${CONTAINER_NAME}
     environment:
