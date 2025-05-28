@@ -108,12 +108,28 @@ Start the container:
 
 * Modify the `SUBNET` value in `.env` if Docker reports a network address conflict.
 
+
+**OR**
+
+You can disable the custom docker network configuration by commenting out the following section in your `docker-compose.yml` file:
+
+```yaml
+# networks:
+#   - default_network
+
+# networks:
+#   default_network:
+#     name: ${NETWORK_NAME}
+#     driver: bridge
+#     ipam:
+#       config:
+#         - subnet: "${SUBNET}"
+
 ---
 
-Then reinstall:
+Then re-run:
 
 ```bash
-npm install
 ./dreload.sh
 ```
 
