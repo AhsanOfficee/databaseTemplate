@@ -11,17 +11,19 @@ services:
       POSTGRES_MAX_CONNECTIONS: "${POSTGRES_MAX_CONNECTIONS}"
     ports:
       - "${ACCESS_PORT}:${TARGET_PORT}"
-    networks:
-      - default_network
+    # # networks: # Define the network configuration As per the original comment
+    # networks:
+    #   - default_network
     volumes:
       - "${BACKUP}:${SOURCE_LOCATION}"
     env_file:
       - .env
     restart: always
-networks:
-   default_network:   # Use a static internal name
-    name: ${NETWORK_NAME}  # This sets the actual network name in Docker
-    driver: bridge
-    ipam: 
-      config: 
-        - subnet: "${SUBNET}"
+# # networks: # Define the network configuration As per the original comment
+# networks:
+#    default_network:   # Use a static internal name
+#     name: ${NETWORK_NAME}  # This sets the actual network name in Docker
+#     driver: bridge
+#     ipam: 
+#       config: 
+#         - subnet: "${SUBNET}"
